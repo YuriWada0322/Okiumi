@@ -1,0 +1,16 @@
+<%= @user.username %>
+<%= @user.profile %>
+
+<% if @user.id == current_user.id %>
+  <%= @user.email %>
+  <%= link_to "edit", edit_user_path(@user) %>
+<% end %>
+
+<% @user.posts.each do |post| %>
+  
+  <%= link_to "詳細", post_path(post) %>
+  <% if @user.id == current_user.id %>
+    <%= link_to "編集", edit_post_path(post) %>
+    <%= link_to "削除", post_path(post), method: :delete, data: {confirm: "削除しますか？"} %>
+  <% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<% @posts.each do |post| %>
+  <%= link_to post_path(post) do %>
+    <%= post.title %>
+  <% end %>
+  <%= post.user.username %>
+  <%= post.updated_at.strftime("%Y-%m-%d") %>
+<% end %>
